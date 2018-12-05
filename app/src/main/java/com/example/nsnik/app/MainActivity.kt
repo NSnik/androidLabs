@@ -1,9 +1,11 @@
 package com.example.nsnik.app
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Gravity
+import android.widget.Button
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +23,16 @@ class MainActivity : AppCompatActivity() {
         toast.show()
 
         Log.d("L1", "onCreate")
+
+        val batteryButton = findViewById<Button>(R.id.batteryBtn)
+        batteryButton.setOnClickListener {
+            startActivity(Intent(this, BatteryActivity::class.java))
+        }
+
+        val locationButton = findViewById<Button>(R.id.locationBtn)
+        locationButton.setOnClickListener {
+            startActivity(Intent(this, LocationActivity::class.java))
+        }
     }
 
     override fun onStart() {
