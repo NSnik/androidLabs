@@ -33,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         locationButton.setOnClickListener {
             startActivity(Intent(this, LocationActivity::class.java))
         }
+
+        val apiButton = findViewById<Button>(R.id.apiBtn)
+        apiButton.setOnClickListener {
+            startActivity(Intent(this, DomainSearchActivity::class.java))
+        }
     }
 
     override fun onStart() {
