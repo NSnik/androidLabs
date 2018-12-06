@@ -8,12 +8,15 @@ import android.os.Process
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.location.LocationManager
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
 
 
 class LocationActivity : AppCompatActivity() {
 
     lateinit var locatinTextView: TextView
+    lateinit var locationProgressBar: ProgressBar
 
     fun getLocation() {
         if (checkPermission(
@@ -22,6 +25,7 @@ class LocationActivity : AppCompatActivity() {
                 Process.myUid()
             ) == PackageManager.PERMISSION_GRANTED
         ) {
+            locationProgressBar.visibility = View.VISIBLE
             val locManager = getSystemService(LOCATION_SERVICE) as LocationManager
 
             val locationListener = object : LocationListener {
@@ -31,7 +35,8 @@ class LocationActivity : AppCompatActivity() {
                     val latitude = location.latitude
                     val longitude = location.longitude
 
-                    locatinTextView.text = "$latitude $longitude"
+                    locationProgressBar.visibility = View.GONE
+                    locatinTextView.text = "$latitude" + System.getProperty("line.separator") + "$longitude"
                 }
 
                 override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {
@@ -45,7 +50,6 @@ class LocationActivity : AppCompatActivity() {
             }
 
             locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 500.0f, locationListener)
-
         } else {
             locationPermission()
         }
@@ -61,6 +65,7 @@ class LocationActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_location)
         locatinTextView = findViewById(R.id.locatinsText)
+        locationProgressBar =  findViewById(R.id.locationProgressBar)
     }
 
     override fun onResume() {

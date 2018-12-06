@@ -8,18 +8,38 @@
         tools:context=".MainActivity">
 
     <Button
-            android:text="Battery level"
+            android:text="Уровень зарада"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/batteryBtn" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginTop="20dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="20dp"/>
     <Button
-            android:text="Location "
+            android:text="Кординаты"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/locationBtn" android:layout_marginTop="16dp"
+            android:id="@+id/locationBtn"
             app:layout_constraintTop_toBottomOf="@+id/batteryBtn" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"/>
+            android:layout_marginStart="20dp" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="1.0" android:layout_marginBottom="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"/>
+    <TextView
+            android:text="переход к информации об уровне заряда батареи и отображения статуса заряда"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/batteryBtn" android:textSize="18sp"
+            android:textAlignment="viewStart" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp"/>
+    <TextView
+            android:text="переход к информации о текущем место положении"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView2" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/locationBtn" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="20dp" android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0" android:textSize="18sp"/>
 
 </android.support.constraint.ConstraintLayout>

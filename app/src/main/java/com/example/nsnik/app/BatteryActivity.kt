@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import android.widget.Toast
 import android.content.IntentFilter
+import android.widget.ProgressBar
 
 class BatteryActivity : AppCompatActivity() {
 
@@ -32,6 +33,9 @@ class BatteryActivity : AppCompatActivity() {
 
         val batteryLevel = findViewById<TextView>(R.id.batteryLevel)
         batteryLevel.text = "Остаток заряда: $batLevel%"
+
+        val batteryLevelBar = findViewById<ProgressBar>(R.id.battaryLevelBar)
+        batteryLevelBar.progress = batLevel
     }
 
     override fun onResume() {
